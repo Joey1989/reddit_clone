@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import './styles/App.css';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import TopNav from './components/TopNav';
+import HomePage from './components/HomePage';
+import CommentsPage from './components/CommentsPage';
+import { RedditProvider } from './providers/RedditProvider';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TopNav />
+      <RedditProvider >
+        <Router>
+          <Routes>
+            <Route exact path="/" element={ <Navigate to="/r/memes" /> } />
+            <Route path="/r/:subreddit" element={<HomePage />} />
+            <Route path="/r/:subreddit/comments/:id/:title" element={<CommentsPage />} />
+          </Routes>
+        </Router>
+      </RedditProvider>
     </div>
   );
 }

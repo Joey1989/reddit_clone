@@ -1,0 +1,17 @@
+.PageContainer {
+    padding-left: var(--page-padding-mobile);
+    padding-right: var(--page-padding-mobile);
+    padding-bottom: 80px;
+}
+
+.PostContainer {
+    display: block;
+}
+
+@media screen and (min-width: 768px) {
+    .PostContainer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}

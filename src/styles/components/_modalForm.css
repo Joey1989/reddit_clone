@@ -1,0 +1,8 @@
+.btn-modal-trigger,
+.btn-modal-trigger:hover {
+    position: fixed;
+    right: 2rem;
+    bottom: 4rem;
+    background-color: var(--reddit-red) !important;
+    border-color: var(--reddit-red) !important;
+}

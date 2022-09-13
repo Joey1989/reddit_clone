@@ -1,0 +1,49 @@
+.CommentsSection {
+    padding: var(--card-padding-mobile);
+    margin-top: var(--card-margin-mobile);
+    margin-bottom: var(--card-margin-mobile);
+    border-radius: var(--card-border-radiu-mobile);
+    color: var(--black-text);
+    background-color: var(--white);
+    flex-grow: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.CommentsSection h3 {
+    width: 100%;
+    text-align: left;
+    margin-top: 0.5rem;
+}
+
+.CommentCard {
+    border-radius: 1rem;
+    padding: 0.25rem;
+}
+
+.CommentCard.Active {
+    background-color: var(--light-grey);
+}
+
+.CommentCard .CommentHeader {
+    color: var(--light-grey-text);
+    font-weight: var(--bs-body-font-weight);
+    font-size: 0.75rem;
+}
+
+.CommentCard .CommentContent {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-500);
+    padding-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-left: 2px var(--light-grey) solid;
+    overflow: hidden;
+}
+
+.CommentCard .CommentReply {
+    font-size: 0.875rem;
+    cursor: pointer;
+}

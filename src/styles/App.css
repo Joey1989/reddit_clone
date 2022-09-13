@@ -1,0 +1,46 @@
+:root {
+    --light-grey: #d8dfeb;
+    --white: #fff;
+    --black: #000;
+    --black-text: #171A20;
+    --light-grey-text: #393C41;
+    --reddit-red: #ff4500;
+
+    --page-padding-mobile: 0.75rem;
+    --card-margin-mobile: 0.75rem;
+    --card-border-radiu-mobile: 1rem;
+    --card-padding-mobile: 0.75rem;
+
+    --font-weight-500: 500;
+    --font-weight-600: 600;
+}
+
+@import './components/_pageContainer.css';
+@import './components/_postCard.css';
+@import './components/_commentsSection.css';
+@import './components/_goBackLink.css';
+@import './components/_composerForm.css';
+@import './components/_modalForm.css';
+@import './components/_overwrite.css';
+
+.App {
+    text-align: center;
+    background-color: var(--light-grey);
+}
+
+.text-reddit {
+    color: var(--reddit-red);
+}
+
+.btn-reddit,
+.btn-reddit:hover {
+    border-color: var(--reddit-red) !important;
+    background-color: var(--reddit-red) !important;
+}
+
+@media (min-width: 1200px) {
+    .container, .container-md, .container-sm {
+        max-width: 720px;
+    }
+}
+  
