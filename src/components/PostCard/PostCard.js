@@ -3,11 +3,11 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import Carousel from 'react-bootstrap/Carousel';
 
-import { useReddits } from '../providers/RedditProvider';
-import { LoadingPlaceholder } from '../shared/components';
-import { daysAgo, getShortNumbers, decodeHtmlEntity } from '../shared/utils';
-import { ACTION_TYPE, FAKE_AUTH_INFO } from '../constants';
-import IconRedditLogo from '../images/IconRedditLogo';
+import { useReddits } from '../../providers/RedditProvider';
+import { LoadingPlaceholder } from '../../shared/components';
+import { daysAgo, getShortNumbers, decodeHtmlEntity } from '../../shared/utils';
+import { ACTION_TYPE, FAKE_AUTH_INFO } from '../../constants';
+import IconRedditLogo from '../../images/IconRedditLogo';
 
 export default function PostCard({post}) {
     const { redditDispatch } = useReddits();
@@ -63,52 +63,54 @@ export default function PostCard({post}) {
         <div className='PostCard'>
             <div className='PostHead'>
                 {post.subreddit_name_prefixed && (
-                    <div className='PostAvatar' >
+                    <div data-testid='post-avatar' className='PostAvatar'>
                         <IconRedditLogo />
                         <p className='PostSubRedditName'>{post.subreddit_name_prefixed}</p>
                     </div>
                 )}
             </div>
             <div className='PostBody'>
-                {post.title && <h3 className={`PostTitle ${mediaType ? 'OmitText' : ''}`}>{post.title}</h3>}
+                {post.title && <h3 data-testid='post-title' className={`PostTitle ${mediaType ? 'OmitText' : ''}`}>{post.title}</h3>}
                 {mediaType==='Image' && (
-                    <div className='PostImageWrapper' style={{backgroundImage: `url(${decodeHtmlEntity(mediaData)})`}}>
+                    <div data-testid='post-image' className='PostImageWrapper' style={{backgroundImage: `url(${decodeHtmlEntity(mediaData)})`}}>
                     </div>
                 )}
                 {!mediaType && post.selftext && <p className='PostSelfText'>{post.selftext}</p>}
-                {galleryItems && (
-                    <Carousel>
-                        {galleryItems.map(gallery => (
-                            <Carousel.Item>
-                                <img
-                                    className="CaroselImg d-block w-100"
-                                    src={decodeHtmlEntity(gallery)}
-                                    alt="slide"
-                                />
-                                <Carousel.Caption>
-                                    <h3>First slide</h3>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                        ))}
-                    </Carousel>
+                {galleryItems?.length > 0 && (
+                    <div data-testid='post-carousel'>
+                        <Carousel >
+                            {galleryItems.map(gallery => (
+                                <Carousel.Item>
+                                    <img
+                                        className="CaroselImg d-block w-100"
+                                        src={decodeHtmlEntity(gallery)}
+                                        alt="slide"
+                                    />
+                                    <Carousel.Caption>
+                                        <h3>First slide</h3>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                            ))}
+                        </Carousel>
+                    </div>
                 )}
                 {post.author && (
-                    <p className='PostAuthorName'>
+                    <p data-testid='post-author' className='PostAuthorName'>
                         By {post.author}{FAKE_AUTH_INFO.AUTHOR === post.author && '(You)'} · {daysAgo(post.created)}
                     </p>
                 )}
             </div>
             <div className='PostFooter'>
-                <div className='PostVote'>
+                <div data-testid='post-vote' className='PostVote'>
                     <i onClick={upVoteHandler} className={`bi bi-arrow-up ${post.upVoted ? 'text-reddit' : ''}`}></i>
                     <span className={post.upVoted ? 'text-reddit' : ''}>{getShortNumbers(post.score)}</span>
                     <i onClick={downVoteHandler} className={`bi bi-arrow-down ${post.downVoted ? 'text-primary' : ''}`}></i>
                 </div>
-                <div className='PostComment'>
+                <div data-testid='post-comments' className='PostComment'>
                     <i onClick={goToCommentsPage} className="bi bi-chat-left-dots text-muted"></i>
                     {getShortNumbers(post.num_comments)}
                 </div>
-                <div className='PostShare'>
+                <div data-testid='post-share' role='share' className='PostShare'>
                     <i className="bi bi-share text-muted"></i> Share
                 </div>
             </div>

@@ -60,7 +60,7 @@ export default function ComposerForm({ replyToId, replyToAuthor }) {
                         <Form.Control value={comment} onChange={fieldHandler} id="inlineFormInputName" placeholder="Add a comment..." />
                     </Col>
                     <Col xs={1} className="my-1 px-0">
-                        <Button type="submit"><i className="bi bi-send text-white"></i></Button>
+                        <Button className='btn-reddit' type="submit"><i className="bi bi-send text-white"></i></Button>
                     </Col>
                 </Row>
             </Form>

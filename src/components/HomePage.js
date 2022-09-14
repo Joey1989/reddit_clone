@@ -3,9 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import PostCard from './PostCard';
+import { PostCard } from '.';
 import ModalForm from './ModalForm';
-import {LoadingPlaceholder} from '../shared/components';
+import { LoadingPlaceholder } from '../shared/components';
 import { useParams } from "react-router-dom";
 import { useReddits } from '../providers/RedditProvider';
 import { ACTION_TYPE } from '../constants';
@@ -17,10 +17,7 @@ export default function HomePage() {
     useEffect(() => {
         if (posts.length === 0) {
             fetch(`https://www.reddit.com/r/${subreddit}.json`).then(res => {
-                if (res.status !== 200) {
-                    console.log('error');
-                    return;
-                }
+                if (res.status !== 200) return;
 
                 res.json().then(data => {
                     redditDispatch({

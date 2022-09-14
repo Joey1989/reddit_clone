@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import PostCard from './PostCard';
+import { PostCard } from '.';
 import CommentsSection from './CommentsSection';
 import GoBackLink from './GoBackLink';
 import { ACTION_TYPE } from '../constants';
@@ -20,10 +20,7 @@ export default function CommentsPage() {
     useEffect(() => {
         if (posts.length === 0) {
             fetch(`https://www.reddit.com/r/${subreddit}.json`).then(res => {
-                if (res.status !== 200) {
-                    console.log('error');
-                    return;
-                }
+                if (res.status !== 200) return;
 
                 res.json().then(data => {
                     redditDispatch({
@@ -38,10 +35,7 @@ export default function CommentsPage() {
 
         if (posts.length > 0) {
             fetch(`https://www.reddit.com/r/${subreddit}/comments/${id}/${title}.json`).then(res => {
-                if (res.status !== 200) {
-                    console.log('error');
-                    return;
-                }
+                if (res.status !== 200) return;
 
                 res.json().then(data => {
                     redditDispatch({
@@ -59,10 +53,7 @@ export default function CommentsPage() {
     useEffect(() => {
         setCommentsLoading(true);
         fetch(`https://www.reddit.com/r/${subreddit}/comments/${id}/${title}.json`).then(res => {
-            if (res.status !== 200) {
-                console.log('error');
-                return;
-            }
+            if (res.status !== 200) return;
 
             res.json().then(data => {
                 const commentsArr = data[1].data.children;

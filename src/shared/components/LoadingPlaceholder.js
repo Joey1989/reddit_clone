@@ -2,7 +2,7 @@ import Placeholder from 'react-bootstrap/Placeholder';
 
 function LoadingPlaceholder() {
   return (
-    <div className='PlaceHolder' style={{width: '100%'}}>
+    <div className='PlaceHolder' role='PlaceHolder' style={{width: '100%'}}>
       <Placeholder as="p" animation="glow">
         <Placeholder xs={12} />
       </Placeholder>
