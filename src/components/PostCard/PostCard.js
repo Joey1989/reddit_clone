@@ -110,7 +110,7 @@ export default function PostCard({post}) {
                     <i onClick={goToCommentsPage} className="bi bi-chat-left-dots text-muted"></i>
                     {getShortNumbers(post.num_comments)}
                 </div>
-                <div data-testid='post-share' role='share' className='PostShare'>
+                <div data-testid='post-share' className='PostShare'>
                     <i className="bi bi-share text-muted"></i> Share
                 </div>
             </div>

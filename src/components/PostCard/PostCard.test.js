@@ -22,7 +22,7 @@ describe('<PostCard />', () => {
     test('renders <PlaceHolder /> if post props is empty', () => {
         setup({});
     
-        const placeHolderElement = screen.getByRole('PlaceHolder');
+        const placeHolderElement = screen.getByTestId('PlaceHolder');
         expect(placeHolderElement).toBeInTheDocument();
     });
 
